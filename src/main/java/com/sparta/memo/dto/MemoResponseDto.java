@@ -16,7 +16,7 @@ public class MemoResponseDto {
         this.id = memo.getId();
         this.username = memo.getUsername();
         this.contents = memo.getContents();
-        this.createdAt = memo.getcreatedAt();
+        this.createdAt = memo.getCreatedAt();
         this.modifiedAt = memo.getModifiedAt();
     }
 }
