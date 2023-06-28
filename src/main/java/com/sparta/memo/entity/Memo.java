@@ -6,41 +6,27 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
 @Entity // JPA가 관리할 수 있는 Entity 클래스 지정
 @Getter
 @Setter
 @Table(name = "memo") // 매핑할 테이블의 이름을 지정
 @NoArgsConstructor
-public class Memo extends Timestamped{
+public class Memo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "username", nullable = false)
     private String username;
-    @Column(name ="contents", nullable = false,length = 500)
+    @Column(name = "contents", nullable = false, length = 500)
     private String contents;
 
-    @Column(name = "modified_at")
-    private LocalDateTime modifiedAt;
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
-    public void setModifiedAt(LocalDateTime modifiedAt) {
-        this.modifiedAt = modifiedAt;
-    }
     public Memo(MemoRequestDto requestDto) {
         this.username = requestDto.getUsername();
         this.contents = requestDto.getContents();
     }
+
     public void update(MemoRequestDto requestDto) {
         this.username = requestDto.getUsername();
         this.contents = requestDto.getContents();
-    }
-    public LocalDateTime getcreatedAt() {
-        return null;
-    }
-    public LocalDateTime getModifiedAt() {
-        return null;
     }
 }

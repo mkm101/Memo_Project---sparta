@@ -1,6 +1,7 @@
 package com.sparta.memo;
 
 import com.sparta.memo.entity.Memo;
+import com.sparta.memo.repository.MemoRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.junit.jupiter.api.Disabled;
@@ -13,9 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
 public class TransactionTest {
-
-    @PersistenceContext
-    EntityManager em;
+    @PersistenceContext // Entity Manger를 자동으로 불러옴
+    EntityManager em; // em받아옴.
 
     @Autowired
     MemoRepository memoRepository;
