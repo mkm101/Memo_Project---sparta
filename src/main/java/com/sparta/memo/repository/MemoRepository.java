@@ -17,4 +17,6 @@ import java.sql.Statement;
 import java.util.List;
 
 @Repository
-public interface MemoRepository extends JpaRepository<Memo,Long >{}
+public interface MemoRepository extends JpaRepository<Memo,Long>{
+    List<Memo> findAllByOrderByModifiedAtDesc();
+}

@@ -13,14 +13,22 @@ import java.time.LocalDateTime;
 @Setter
 @Table(name = "memo") // 매핑할 테이블의 이름을 지정
 @NoArgsConstructor
-public class Memo {
+public class Memo extends Timestamped{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "username", nullable = false)
     private String username;
-    @Column(name = "contents", nullable = false, length = 500)
+    @Column(name ="contents", nullable = false,length = 500)
     private String contents;
+
+    @Column(name = "modified_at")
+    private LocalDateTime modifiedAt;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+    public void setModifiedAt(LocalDateTime modifiedAt) {
+        this.modifiedAt = modifiedAt;
+    }
     public Memo(MemoRequestDto requestDto) {
         this.username = requestDto.getUsername();
         this.contents = requestDto.getContents();
@@ -29,11 +37,9 @@ public class Memo {
         this.username = requestDto.getUsername();
         this.contents = requestDto.getContents();
     }
-
     public LocalDateTime getcreatedAt() {
         return null;
     }
-
     public LocalDateTime getModifiedAt() {
         return null;
     }

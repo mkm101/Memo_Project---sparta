@@ -1,6 +1,4 @@
 package com.sparta.memo.dto;
-
-
 import lombok.Getter;
 
 @Getter
